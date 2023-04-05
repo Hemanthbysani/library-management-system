@@ -15,7 +15,6 @@ export const insertBook = (req, res) => {
       res.status(201).send(book);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).send(error);
     });
 };
@@ -26,7 +25,6 @@ export const findAllBooks = (req, res) => {
       res.status(200).send(books);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).send(error);
     });
 };
@@ -36,7 +34,6 @@ export const findBook = async (req, res) => {
         const book = await Book.findOne({ ISBN: req.params.isbn})
         res.send(book);
       } catch(err){ 
-        console.log(err);
         res.status(500).send(err);
       }
 }
@@ -48,7 +45,6 @@ export const deleteBook = async (req, res) => {
           if(!delbook) res.status(404).send("Item not found, please check ID");
           res.status(200).send()
       } catch(err) {
-          console.log(err);
           res.status(500).send(err);
       }
 }
@@ -59,7 +55,6 @@ export const updateBook = async (req, res) => {
           // await Book.save();
           res.send(uptbook);
       } catch(err) {
-          console.log(err);
           res.status(500).send(err);
       }
 }
